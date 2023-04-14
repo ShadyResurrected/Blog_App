@@ -39,7 +39,10 @@ app.post('/login', async(req,res) => {
             // make sure to apply these attributes to store the cookie
             sameSite : 'none',
             secure : true
-        }).json('ok')
+        }).json({
+            id : userDoc._id,
+            username
+        })
     })
    }else{
     res.status(400).json('Wrong credentials')
