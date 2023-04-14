@@ -1,35 +1,89 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
+    <main>
+      <header>
+        <a href="" className="logo">
+          MyBlog
         </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <nav>
+          <a href="#">Login</a>
+          <a href="#">Register</a>
+        </nav>
+      </header>
+      <div className="post">
+        <div className="image">
+          <img
+            src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&w=1000&q=80"
+            alt=""
+          />
+        </div>
+        <div className="texts">
+          <h2>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic,
+            molestias?
+          </h2>
+          <p className="info">
+            <a className="author">lorem ipsum</a>
+            <time>2023-04-14 14:34</time>
+          </p>
+          <p className="summary">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+            cupiditate praesentium placeat vero pariatur quae fugiat expedita
+            voluptatum recusandae aut.
+          </p>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="post">
+        <div className="image">
+          <img
+            src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&w=1000&q=80"
+            alt=""
+          />
+        </div>
+        <div className="texts">
+          <h2>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic,
+            molestias?
+          </h2>
+          <p className="info">
+            <a className="author">lorem ipsum</a>
+            <time>2023-04-14 14:34</time>
+          </p>
+          <p className="summary">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+            cupiditate praesentium placeat vero pariatur quae fugiat expedita
+            voluptatum recusandae aut.
+          </p>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+      <div className="post">
+        <div className="image">
+          <img
+            src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&w=1000&q=80"
+            alt=""
+          />
+        </div>
+        <div className="texts">
+          <h2>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic,
+            molestias?
+          </h2>
+          <p className="info">
+            <a className="author">lorem ipsum</a>
+            <time>2023-04-14 14:34</time>
+          </p>
+          <p className="summary">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+            cupiditate praesentium placeat vero pariatur quae fugiat expedita
+            voluptatum recusandae aut.
+          </p>
+        </div>
+      </div>
+    </main>
+  );
 }
 
-export default App
+export default App;
