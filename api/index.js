@@ -11,19 +11,20 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const fs = require("fs");
+require('dotenv').config()
 
 const salt = bcrypt.genSaltSync(10);
-const secret = "fdsfasfdsgabnfgbiobfo";
+const secret = process.env.secret;
 
 // middlewares
-app.use(cors({ credentials: true, origin: "http://127.0.0.1:5173", }));
+app.use(cors({ credentials: true, origin: process.env.FRONTEND_URL, }));
 app.use(express.json());
 app.use(cookieParser());
 const uploadMiddleware = multer({ dest: "uploads/" });
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
 mongoose.connect(
-  "mongodb+srv://admin:admin@cluster0.nnbv4oj.mongodb.net/?retryWrites=true&w=majority"
+  `mongodb+srv://admin:${process.env.password}@cluster0.nnbv4oj.mongodb.net/?retryWrites=true&w=majority`
 );
 
 app.post("/register", async (req, res) => {
@@ -41,8 +42,8 @@ app.post("/register", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
-  // problem here
   const userDoc = await User.findOne({ username: username });
+  if(userDoc === null) return res.status(404).json({message : "Invalid Credentials!"})
   const passOk = bcrypt.compareSync(password, userDoc.password);
   if (passOk) {
     jwt.sign({ username, id: userDoc._id }, secret, {}, (err, token) => {
@@ -79,7 +80,7 @@ app.post("/logout", (req, res) => {
       sameSite: "none",
       secure: true,
     })
-    .json("ok");
+    .json("Logged Out successfully!");
 });
 
 app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
