@@ -7,10 +7,10 @@ import { UserContext } from "../../Context/UserContext";
 const PostPage = () => {
   const { id } = useParams();
   const [postInfo, setPostInfo] = useState(null);
-  const { userInfo } = useContext(UserContext);
+  const { userInfo, server } = useContext(UserContext);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/post/${id}`).then((response) => {
+    fetch(`${server}/post/${id}`).then((response) => {
       response.json().then((postInfo) => {
         setPostInfo(postInfo);
       });
@@ -46,7 +46,7 @@ const PostPage = () => {
         </div>
       )}
       <div className="image">
-        <img src={`http://localhost:4000/${postInfo.cover}`} alt="" />
+        <img src={`${server}/${postInfo.cover}`} alt="" />
       </div>
       <div
         className="content"

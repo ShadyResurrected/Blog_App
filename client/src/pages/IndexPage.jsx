@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Post from '../component/Post'
 
+import { UserContext } from '../../Context/UserContext'
+
 const IndexPage = () => {
+
+  const {server} = useContext(UserContext)
+
   const [posts, setPosts] = useState([])
   useEffect(() => {
-    fetch('http://localhost:4000/post').then(response => {
+    fetch(`${server}/post`).then(response => {
       response.json().then(posts => {
         setPosts(posts)
       })
